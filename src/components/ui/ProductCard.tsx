@@ -1,10 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { useCartStore, CartItem } from '@/store/useCartStore';
 
 interface ProductCardProps {
-  product: Omit<CartItem, 'quantity'>;
+  product: Omit<CartItem, 'quantity'> & { category?: string };
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
@@ -32,7 +31,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <h4 className="font-sans text-sm font-semibold uppercase tracking-widest text-navy mb-1">
         {product.name}
       </h4>
-      <p className="font-sans text-slate-500 mb-2 text-sm">{/* Category or description placeholder */}Premium Care</p>
+      <p className="font-sans text-slate-500 mb-2 text-sm">{product.category ?? 'Premium Care'}</p>
       <p className="font-serif text-lg text-navy">${product.price.toFixed(2)}</p>
     </div>
   );
