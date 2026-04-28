@@ -23,7 +23,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         />
         <button 
           onClick={handleAddToCart}
-          className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur text-navy py-3 font-sans text-sm font-semibold tracking-widest translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 uppercase"
+          className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur text-navy py-3 font-sans text-sm font-semibold tracking-widest translate-y-0 opacity-100 md:translate-y-16 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 uppercase"
         >
           Add to Cart
         </button>
