@@ -2,8 +2,8 @@
 
 import { useCartStore } from '@/store/useCartStore';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import TactileButton from '../ui/TactileButton';
+import TactileCard from '../ui/TactileCard';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, totalPrice } = useCartStore();
@@ -27,107 +27,110 @@ export default function CartDrawer() {
 
   return (
     <>
-      {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-navy/50 backdrop-blur-sm z-[60] transition-opacity duration-300"
+        className="fixed inset-0 bg-text-main/20 backdrop-blur-md z-[60] transition-opacity duration-300"
         onClick={closeCart}
       />
 
-      {/* Drawer */}
-      <div className="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white z-[70] shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-0">
-        <div className="flex items-center justify-between p-6 border-b border-slate-100">
-          <div className="flex items-center gap-3">
-            <ShoppingBag className="text-navy" size={24} />
-            <h2 className="font-serif text-2xl text-navy">Your Cart</h2>
+      <div className="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-background z-[70] shadow-2xl flex flex-col transform transition-transform duration-500 ease-out translate-x-0">
+        <div className="glass flex items-center justify-between p-8 border-b border-gray-100">
+          <div className="flex items-center gap-4">
+            <div className="tactile-out p-3 rounded-xl bg-white">
+              <ShoppingBag className="text-accent-blue" size={20} />
+            </div>
+            <h2 className="font-display text-2xl font-black text-text-main tracking-tighter">Your Bag</h2>
           </div>
           <button 
             onClick={closeCart}
-            className="text-slate-400 hover:text-navy transition-colors p-2 rounded-full hover:bg-slate-50"
+            className="tactile-out p-2 rounded-xl bg-white hover:text-accent-blue transition-all active:scale-90"
           >
-            <X size={24} />
+            <X size={20} />
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-8 space-y-6">
           {items.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
-              <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-4">
-                <ShoppingBag className="text-slate-300" size={32} />
+            <div className="h-full flex flex-col items-center justify-center text-center space-y-6">
+              <div className="w-24 h-24 tactile-in rounded-full flex items-center justify-center mb-4 bg-gray-50/50">
+                <ShoppingBag className="text-gray-300" size={40} />
               </div>
-              <p className="font-sans text-slate-500 text-lg">Your cart is currently empty.</p>
-              <button 
-                onClick={closeCart}
-                className="text-gold font-bold uppercase tracking-widest text-sm hover:text-navy transition-colors"
-              >
-                Continue Shopping
-              </button>
+              <div>
+                <p className="font-display font-bold text-text-main text-xl mb-2">Empty Bag</p>
+                <p className="font-sans text-text-sub text-sm max-w-[200px]">Looks like you haven't added anything yet.</p>
+              </div>
+              <TactileButton variant="glass" onClick={closeCart}>
+                START SHOPPING
+              </TactileButton>
             </div>
           ) : (
             <div className="space-y-6">
               {items.map((item) => (
-                <div key={item.id} className="flex gap-4 bg-slate-50 p-4 rounded-xl">
-                  <div className="relative w-20 h-24 rounded-lg overflow-hidden shrink-0 bg-white">
+                <TactileCard key={item.id} padding="none" elevation="low" className="flex gap-4 p-4 group">
+                  <div className="relative w-24 h-28 rounded-xl overflow-hidden shrink-0 tactile-in bg-white p-1">
                     <img 
                       src={item.image} 
                       alt={item.name}
-                      className="object-cover w-full h-full"
+                      className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
-                  <div className="flex-1 flex flex-col justify-between">
+                  <div className="flex-1 flex flex-col justify-between py-1">
                     <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <h3 className="font-sans font-bold text-navy text-sm uppercase tracking-wider pr-4">{item.name}</h3>
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-display font-black text-text-main text-xs uppercase tracking-tight">{item.name}</h3>
                         <button 
                           onClick={() => removeItem(item.id)}
-                          className="text-slate-400 hover:text-red-500 transition-colors"
+                          className="text-gray-300 hover:text-accent-orange transition-colors"
                         >
                           <X size={16} />
                         </button>
                       </div>
-                      <p className="font-serif text-navy">${item.price.toFixed(2)}</p>
+                      <p className="font-display font-bold text-accent-blue text-sm">${item.price.toFixed(2)}</p>
                     </div>
                     
-                    <div className="flex items-center gap-3 mt-2">
-                      <div className="flex items-center border border-slate-200 rounded-lg bg-white">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center tactile-in rounded-xl bg-white p-1">
                         <button 
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="px-3 py-1 text-slate-500 hover:text-navy transition-colors"
+                          className="w-8 h-8 flex items-center justify-center text-text-sub hover:text-text-main transition-colors"
                           disabled={item.quantity <= 1}
                         >
                           <Minus size={14} />
                         </button>
-                        <span className="font-sans font-medium text-sm w-8 text-center">{item.quantity}</span>
+                        <span className="font-display font-black text-xs w-8 text-center">{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="px-3 py-1 text-slate-500 hover:text-navy transition-colors"
+                          className="w-8 h-8 flex items-center justify-center text-text-sub hover:text-text-main transition-colors"
                         >
                           <Plus size={14} />
                         </button>
                       </div>
                     </div>
                   </div>
-                </div>
+                </TactileCard>
               ))}
             </div>
           )}
         </div>
 
         {items.length > 0 && (
-          <div className="p-6 border-t border-slate-100 bg-white">
-            <div className="flex justify-between items-center mb-6">
-              <span className="font-sans text-slate-500 uppercase tracking-widest text-sm font-bold">Total</span>
-              <span className="font-serif text-2xl text-navy">${totalPrice().toFixed(2)}</span>
+          <div className="p-8 glass border-t border-gray-100">
+            <div className="flex justify-between items-center mb-8">
+              <span className="font-display text-text-sub uppercase tracking-[0.2em] text-[10px] font-bold">Subtotal</span>
+              <span className="font-display text-3xl font-black text-text-main tracking-tighter">${totalPrice().toFixed(2)}</span>
             </div>
             
-            <button 
+            <TactileButton 
+              colorScheme="blue" 
+              size="lg" 
+              className="w-full h-16"
               onClick={handleCheckout}
-              className="w-full bg-navy text-white font-bold font-sans uppercase tracking-widest py-4 rounded-xl hover:bg-navy/90 transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
             >
-              Checkout via WhatsApp
-            </button>
+              CHECKOUT VIA WHATSAPP
+            </TactileButton>
           </div>
         )}
       </div>
     </>
   );
 }
+

@@ -1,22 +1,63 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0F172A;
-  --color-gold: #D4AF37;
-  --color-white: #F8FAFC;
-  --color-pink: #FCE7F3;
-  --color-surface: #f7f9fb;
-  --color-on-surface: #191c1e;
+  /* Colors */
+  --color-background: #f1f4f8;
+  --color-surface: #ffffff;
+  --color-surface-dark: #2d3436;
   
-  --font-serif: var(--font-noto-serif), serif;
-  --font-sans: var(--font-manrope), sans-serif;
+  --color-accent-blue: #4a90e2;
+  --color-accent-orange: #ff7e33;
+  --color-accent-purple: #9b51e0;
+  --color-accent-green: #2ecc71;
+  --color-navy: #0f172a;
+  --color-gold: #c5a059;
   
-  --color-background: var(--color-white);
-  --color-foreground: var(--color-navy);
+  --color-text-main: #2d3436;
+  --color-text-sub: #636e72;
+
+  /* Radius Steps */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+
+  /* Custom Shadows (Neomorphic) */
+  --shadow-tactile-out: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+  --shadow-tactile-in: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff;
+  --shadow-elevation: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+
+  /* Fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
 }
 
 body {
   background-color: var(--color-background);
-  color: var(--color-foreground);
+  color: var(--color-text-main);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .tactile-out {
+    box-shadow: var(--shadow-tactile-out);
+  }
+  
+  .tactile-in {
+    box-shadow: var(--shadow-tactile-in);
+  }
+
+  .focus-ring {
+    outline: 2px solid var(--color-accent-blue);
+    outline-offset: 2px;
+  }
 }

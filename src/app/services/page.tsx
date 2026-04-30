@@ -29,19 +29,19 @@ const SERVICES = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-surface min-h-screen">
+    <div className="bg-background min-h-screen">
       {/* Page Header */}
-      <section className="pt-32 pb-20 px-8 md:px-16 text-center">
-        <h1 className="font-serif text-5xl md:text-6xl text-navy mb-6">Our Services</h1>
-        <div className="w-12 h-px bg-gold mx-auto mb-8"></div>
-        <p className="font-sans text-slate-500 max-w-2xl mx-auto leading-relaxed">
+      <section className="pt-40 pb-20 px-8 md:px-16 text-center">
+        <div className="w-16 h-1 bg-accent-blue rounded-full mx-auto mb-10"></div>
+        <h1 className="font-display text-5xl md:text-7xl font-black text-text-main mb-8 uppercase tracking-tighter">Our Services</h1>
+        <p className="font-sans text-text-sub max-w-2xl mx-auto leading-relaxed text-lg">
           From precision cuts to artisan coloring, discover a curated selection of premium salon services tailored exclusively to your desires.
         </p>
       </section>
 
       {/* Services Grid */}
-      <section className="px-8 md:px-16 pb-32">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
+      <section className="px-8 md:px-16 pb-40">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
           {SERVICES.map((service, index) => (
             <ServiceCard 
               key={index}
@@ -56,3 +56,4 @@ export default function ServicesPage() {
     </div>
   );
 }
+

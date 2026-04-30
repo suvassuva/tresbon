@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ChevronRight, ChevronLeft, Star } from "lucide-react";
 import ProductCard from "@/components/ui/ProductCard";
 import ServiceCard from "@/components/ui/ServiceCard";
+import TactileButton from "@/components/ui/TactileButton";
+import TactileCard from "@/components/ui/TactileCard";
 
 const FEATURED_PRODUCTS = [
   {
@@ -56,12 +58,16 @@ export default function Home() {
             <p className="font-sans text-lg text-white/90 mb-12 max-w-lg leading-relaxed">
               Experience the pinnacle of luxury hair care and bespoke beauty treatments tailored to your unique essence.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <Link href="/services" className="bg-gold text-white px-10 py-4 font-sans text-xs font-semibold tracking-widest hover:bg-gold/90 transition-all text-center uppercase shadow-xl shadow-gold/20">
-                Discover Services
+            <div className="flex flex-col sm:flex-row gap-6 mt-12">
+              <Link href="/services">
+                <TactileButton colorScheme="blue" size="lg" className="w-full sm:w-auto">
+                  DISCOVER SERVICES
+                </TactileButton>
               </Link>
-              <Link href="/shop" className="border border-white/40 backdrop-blur-sm px-10 py-4 font-sans text-xs font-semibold tracking-widest hover:bg-white/10 transition-all text-center uppercase">
-                Shop Collection
+              <Link href="/shop">
+                <TactileButton variant="glass" size="lg" className="w-full sm:w-auto">
+                  SHOP COLLECTION
+                </TactileButton>
               </Link>
             </div>
           </div>
@@ -72,9 +78,9 @@ export default function Home() {
       <section className="py-32 bg-surface px-8 md:px-16">
         <div className="max-w-[1440px] mx-auto">
           <div className="text-center mb-20 flex flex-col items-center">
-            <div className="w-px h-16 bg-gold mb-12"></div>
-            <h2 className="font-serif text-4xl text-navy mb-4">Curated Experiences</h2>
-            <p className="font-sans text-slate-500 max-w-xl mx-auto leading-relaxed">
+            <div className="w-12 h-1 bg-accent-blue rounded-full mb-8"></div>
+            <h2 className="font-display text-4xl font-bold text-text-main mb-4 uppercase tracking-tight">Curated Experiences</h2>
+            <p className="font-sans text-text-sub max-w-xl mx-auto leading-relaxed">
               Designed for those who appreciate the finer details of craftsmanship and personal care.
             </p>
           </div>
@@ -101,8 +107,8 @@ export default function Home() {
         <div className="max-w-[1440px] mx-auto px-8 md:px-16">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
-              <h2 className="font-serif text-4xl text-navy">Luxury Essentials</h2>
-              <p className="font-sans text-slate-500 mt-4 max-w-md leading-relaxed">
+              <h2 className="font-display text-4xl font-bold text-text-main uppercase tracking-tight">Luxury Essentials</h2>
+              <p className="font-sans text-text-sub mt-4 max-w-md leading-relaxed">
                 Professional products used and recommended by our stylists. Experience salon-quality care at home.
               </p>
             </div>
@@ -126,7 +132,7 @@ export default function Home() {
           <div className="text-center mb-20 flex flex-col items-center">
             <div className="w-px h-16 bg-gold mb-12"></div>
             <h2 className="font-serif text-4xl mb-4 text-white">Our Premium Partners</h2>
-            <p className="font-sans text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-sans text-white/70 max-w-2xl mx-auto leading-relaxed">
               We exclusively use the world's finest professional brands to ensure exceptional, uncompromising results for your hair and skin.
             </p>
           </div>
@@ -134,94 +140,92 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
             {/* Hair Care */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden flex flex-col">
+            <TactileCard padding="none" elevation="low" className="group flex flex-col h-full overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&q=80" 
                 alt="Hair Care Brands" 
-                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
               />
               <div className="p-8 flex-1">
-                <h3 className="font-sans text-sm font-bold uppercase tracking-widest text-gold mb-6 border-b border-white/10 pb-4">Hair Care</h3>
+                <h3 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-accent-blue mb-6 border-b border-gray-100 pb-4">Hair Care</h3>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-serif text-2xl text-white mb-2">Aveda</h4>
-                    <p className="text-sm text-slate-400 font-sans leading-relaxed">
+                    <h4 className="font-display text-2xl font-bold text-text-main mb-2">Aveda</h4>
+                    <p className="text-sm text-text-sub font-sans leading-relaxed">
                       Our flagship partner. 100% vegan, cruelty-free, and powered by the art and science of pure botanical flower and plant essences. Sustainable luxury at its finest.
                     </p>
                   </div>
-                  <div>
-                    <h4 className="font-serif text-xl text-white">3TENX</h4>
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-xl text-white">Wella Professionals</h4>
+                  <div className="space-y-2">
+                    <h4 className="font-display text-lg font-bold text-text-main">3TENX</h4>
+                    <h4 className="font-display text-lg font-bold text-text-main">Wella Professionals</h4>
                   </div>
                 </div>
               </div>
-            </div>
+            </TactileCard>
 
             {/* Skin Care */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden flex flex-col">
+            <TactileCard padding="none" elevation="low" className="group flex flex-col h-full overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80" 
                 alt="Skin Care Brands" 
-                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
               />
               <div className="p-8 flex-1">
-                <h3 className="font-sans text-sm font-bold uppercase tracking-widest text-gold mb-6 border-b border-white/10 pb-4">Skin Care</h3>
+                <h3 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-accent-blue mb-6 border-b border-gray-100 pb-4">Skin Care</h3>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-serif text-xl text-white mb-2">Jeannot</h4>
-                    <p className="text-sm text-slate-400 font-sans leading-relaxed">Advanced skincare formulations for radiant, glowing skin.</p>
+                    <h4 className="font-display text-xl font-bold text-text-main mb-2">Jeannot</h4>
+                    <p className="text-sm text-text-sub font-sans leading-relaxed">Advanced skincare formulations for radiant, glowing skin.</p>
                   </div>
                   <div>
-                    <h4 className="font-serif text-xl text-white mb-2">DermaFig</h4>
-                    <p className="text-sm text-slate-400 font-sans leading-relaxed">Clinical-grade treatments for targeted skin nourishment.</p>
+                    <h4 className="font-display text-xl font-bold text-text-main mb-2">DermaFig</h4>
+                    <p className="text-sm text-text-sub font-sans leading-relaxed">Clinical-grade treatments for targeted skin nourishment.</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </TactileCard>
 
             {/* Waxing */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden flex flex-col">
+            <TactileCard padding="none" elevation="low" className="group flex flex-col h-full overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80" 
                 alt="Waxing Brands" 
-                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
               />
               <div className="p-8 flex-1">
-                <h3 className="font-sans text-sm font-bold uppercase tracking-widest text-gold mb-6 border-b border-white/10 pb-4">Waxing</h3>
+                <h3 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-accent-blue mb-6 border-b border-gray-100 pb-4">Waxing</h3>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-serif text-xl text-white mb-2">Depileve</h4>
-                    <p className="text-sm text-slate-400 font-sans leading-relaxed">The global gold standard in professional hair removal systems.</p>
+                    <h4 className="font-display text-xl font-bold text-text-main mb-2">Depileve</h4>
+                    <p className="text-sm text-text-sub font-sans leading-relaxed">The global gold standard in professional hair removal systems.</p>
                   </div>
                   <div>
-                    <h4 className="font-serif text-xl text-white mb-2">Rica</h4>
-                    <p className="text-sm text-slate-400 font-sans leading-relaxed">Gentle, natural formulations for sensitive skin care.</p>
+                    <h4 className="font-display text-xl font-bold text-text-main mb-2">Rica</h4>
+                    <p className="text-sm text-text-sub font-sans leading-relaxed">Gentle, natural formulations for sensitive skin care.</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </TactileCard>
 
             {/* Treatments */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-gold/50 transition-colors overflow-hidden flex flex-col">
+            <TactileCard padding="none" elevation="low" className="group flex flex-col h-full overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?auto=format&fit=crop&q=80" 
                 alt="Deep Conditioning Brands" 
-                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
               />
               <div className="p-8 flex-1 flex flex-col">
-                <h3 className="font-sans text-sm font-bold uppercase tracking-widest text-gold mb-6 border-b border-white/10 pb-4">Deep Conditioning</h3>
+                <h3 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-accent-blue mb-6 border-b border-gray-100 pb-4">Treatments</h3>
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-serif text-2xl text-white mb-2">Cadiveu<br/>Brasil Cacau</h4>
-                    <p className="text-sm text-slate-400 font-sans leading-relaxed">
-                      The ultimate keratin protein treatment. Eliminates frizz and delivers incredible shine, smooth texture, and deep restructuring.
+                    <h4 className="font-display text-2xl font-bold text-text-main mb-2">Cadiveu Brasil Cacau</h4>
+                    <p className="text-sm text-text-sub font-sans leading-relaxed">
+                      The ultimate keratin protein treatment. Eliminates frizz and delivers incredible restructuring.
                     </p>
                   </div>
                 </div>
               </div>
-            </div>
+            </TactileCard>
 
           </div>
         </div>
@@ -229,64 +233,65 @@ export default function Home() {
 
       {/* Creative Director Section */}
       <section className="py-32 bg-white px-8 md:px-16">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <TactileCard padding="none" elevation="high" className="relative h-[600px] w-full overflow-hidden">
             <img 
               src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80" 
               alt="Kamala - Creative Director" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105"
             />
-          </div>
+          </TactileCard>
           <div className="max-w-xl">
             <div className="flex items-center gap-4 mb-6">
-              <div className="h-[1px] w-12 bg-gold"></div>
-              <span className="font-sans text-xs font-semibold tracking-[0.3em] text-gold uppercase">Meet Our Visionary</span>
+              <div className="h-1 w-12 bg-accent-blue rounded-full"></div>
+              <span className="font-display text-xs font-bold tracking-[0.3em] text-accent-blue uppercase">Meet Our Visionary</span>
             </div>
-            <h2 className="font-serif text-4xl md:text-5xl text-navy mb-2">Kamala</h2>
-            <h3 className="font-sans text-lg tracking-widest uppercase text-slate-500 mb-8 font-semibold">Creative Director</h3>
-            <p className="font-sans text-slate-500 leading-relaxed text-lg mb-6">
+            <h2 className="font-display text-5xl font-bold text-text-main mb-2">Kamala</h2>
+            <h3 className="font-display text-sm tracking-[0.3em] uppercase text-text-sub mb-10 font-bold">Creative Director</h3>
+            <p className="font-sans text-text-sub leading-relaxed text-lg mb-8">
               Kamala, our visionary Creative Director, leads our team with an unparalleled passion for hair artistry and innovation. With over 15 years of experience, Kamala specializes in avant-garde cuts, vibrant color transformations, and personalized styling that truly reflects each client's unique personality.
             </p>
-            <p className="font-sans text-slate-500 leading-relaxed text-lg">
-              Her commitment to continuous learning and trend-setting techniques ensures Très Bon Salon remains at the forefront of the beauty industry, delivering exceptional results and an unforgettable salon experience.
-            </p>
+            <TactileButton variant="default" colorScheme="blue">
+              VIEW HER PORTFOLIO
+            </TactileButton>
           </div>
         </div>
       </section>
 
       {/* Testimonial */}
-      <section className="py-32 bg-surface px-8 md:px-16 overflow-hidden relative">
+      <section className="py-40 bg-background px-8 md:px-16 overflow-hidden relative">
         <div className="max-w-[1440px] mx-auto relative flex justify-center">
-          <div className="text-[250px] font-serif text-slate-200 absolute -top-32 md:-left-12 leading-none select-none z-0">“</div>
-          <div className="relative z-10 max-w-4xl text-center flex flex-col items-center">
-            <span className="font-sans text-xs font-semibold tracking-widest text-gold uppercase mb-8 block">Reflections</span>
-            <p className="font-serif text-3xl md:text-5xl text-navy italic leading-relaxed mb-12">
+          <div className="text-[300px] font-display font-black text-gray-200/50 absolute -top-40 left-0 leading-none select-none z-0">“</div>
+          <TactileCard padding="lg" elevation="high" className="relative z-10 max-w-4xl text-center flex flex-col items-center">
+            <span className="font-display text-xs font-bold tracking-[0.3em] text-accent-blue uppercase mb-12 block">Reflections</span>
+            <p className="font-display text-3xl md:text-5xl text-text-main font-bold leading-relaxed mb-12">
               "TrèsBon is more than a salon; it's a sanctuary. The attention to detail and the personalized approach to my hair color changed how I feel every day."
             </p>
             <div className="flex flex-col items-center">
               <img 
-                className="w-20 h-20 rounded-full object-cover mb-6 border-2 border-gold shadow-xl" 
+                className="w-24 h-24 rounded-full object-cover mb-8 tactile-out p-1" 
                 alt="Testimonial author" 
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSC9Xdk3l5V6gIWdLwHMchAF8NEN1YIMDQgS1A1WJ8zvuez6lC7yXvC3wZjZqssXy-88tnK6xmGsHMp6Nxxyo8PtO8sSIEb4QLDGwum00T8R-kJ1ZpPtE76rRhFCDYWEGlUSfw52XrEXfncjXu0shGdI4x4YPU4tgt5l3wc1AmuJUOccbrZwCVujwcAfa748uu9Jjj3uPECg0XXHp66ug3V0w5scFJDbFKx6dlApKpzZBX1nKgfpnX7URmbo-Mu0msb7dbD1eGXycu" 
               />
-              <p className="font-sans text-sm font-semibold uppercase tracking-widest text-navy">Alexandra Vance</p>
-              <p className="text-xs text-slate-500 tracking-wider mt-1 mb-8">LIFESTYLE CURATOR</p>
+              <p className="font-display text-sm font-bold uppercase tracking-widest text-text-main">Alexandra Vance</p>
+              <p className="text-[10px] text-text-sub font-bold tracking-[0.2em] mt-2 mb-12 uppercase">Lifestyle Curator</p>
               
               <a 
                 href="https://www.google.com/search?q=Tres+Bon+Unisex+Salon+BTM+2nd+Stage+Bengaluru" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white border border-slate-200 px-8 py-4 rounded-full hover:border-gold hover:shadow-lg transition-all font-sans text-sm font-semibold text-navy group"
               >
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-gold text-gold group-hover:scale-110 transition-transform delay-75" />
-                  ))}
-                </div>
-                <span className="uppercase tracking-widest text-xs">Review us on Google</span>
+                <TactileButton variant="glass" className="flex gap-4 px-8">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-accent-blue text-accent-blue" />
+                    ))}
+                  </div>
+                  <span className="uppercase tracking-widest text-[10px] font-bold">Review us on Google</span>
+                </TactileButton>
               </a>
             </div>
-          </div>
+          </TactileCard>
         </div>
       </section>
     </>

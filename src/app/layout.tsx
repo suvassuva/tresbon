@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-import { Noto_Serif, Manrope } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/shared/WhatsAppWidget";
 import CartDrawer from "@/components/shared/CartDrawer";
 import "./globals.css";
 
-const notoSerif = Noto_Serif({
-  variable: "--font-noto-serif",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "TrèsBon | Luxury Salon & Spa",
-  description: "Experience the pinnacle of luxury hair care and bespoke beauty treatments.",
+  title: "TrèsBon | Neo-Tactiod Luxury Salon",
+  description: "Experience the future of grooming with our tactile-inspired luxury beauty treatments.",
 };
 
 export default function RootLayout({
@@ -29,9 +29,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${notoSerif.variable} ${manrope.variable} h-full antialiased`}
+      className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white text-navy font-sans">
+      <body className="min-h-full flex flex-col bg-background text-text-main font-sans selection:bg-accent-blue selection:text-white">
         <Navbar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
@@ -41,3 +41,4 @@ export default function RootLayout({
     </html>
   );
 }
+

@@ -190,29 +190,30 @@ export default function ShopPage() {
     : products.filter((p) => p.category === activeCategory);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       {/* Page Header */}
-      <section className="bg-navy pt-32 pb-20 px-4">
+      <section className="pt-40 pb-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="font-serif text-4xl md:text-5xl text-white mb-6">The Boutique</h1>
-          <p className="font-sans text-slate-300 max-w-2xl mx-auto text-lg">
+          <div className="w-16 h-1 bg-accent-blue rounded-full mx-auto mb-10"></div>
+          <h1 className="font-display text-5xl md:text-7xl font-black text-text-main mb-8 uppercase tracking-tighter">The Boutique</h1>
+          <p className="font-sans text-text-sub max-w-2xl mx-auto text-lg leading-relaxed">
             Curated premium products from Aveda, Wella & 3TENX — maintain your salon-perfect look at home.
           </p>
         </div>
       </section>
 
       {/* Category Filter */}
-      <section className="sticky top-20 z-30 bg-white/80 backdrop-blur-xl border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 py-4 overflow-x-auto scrollbar-hide">
-          <div className="flex items-center gap-3 min-w-max justify-center">
+      <section className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-white/5 py-6">
+        <div className="max-w-7xl mx-auto px-4 overflow-x-auto scrollbar-hide">
+          <div className="flex items-center gap-4 min-w-max justify-center">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full font-sans text-sm font-semibold tracking-widest uppercase transition-all duration-300 whitespace-nowrap ${
+                className={`px-8 py-3 rounded-2xl font-display text-sm font-bold tracking-widest uppercase transition-all duration-300 whitespace-nowrap shadow-sm border ${
                   activeCategory === cat
-                    ? 'bg-navy text-white shadow-lg shadow-navy/20'
-                    : 'bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-navy'
+                    ? 'bg-accent-blue text-white shadow-[0_8px_20px_-4px_rgba(59,130,246,0.5)] border-accent-blue scale-105'
+                    : 'bg-white/5 text-text-sub hover:bg-white/10 hover:text-text-main border-white/5 tactile-out'
                 }`}
               >
                 {cat}
@@ -223,26 +224,26 @@ export default function ShopPage() {
       </section>
 
       {/* Product Grid */}
-      <section className="py-24 px-4">
+      <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-12 border-b border-slate-200 pb-4">
-            <h2 className="font-serif text-2xl text-navy">
+          <div className="flex justify-between items-end mb-16 border-b border-white/5 pb-8">
+            <h2 className="font-display text-3xl font-black text-text-main uppercase tracking-tight">
               {activeCategory === 'All' ? 'All Products' : activeCategory}
             </h2>
-            <div className="font-sans text-sm text-slate-500 uppercase tracking-widest">
+            <div className="font-sans text-sm text-text-sub font-medium uppercase tracking-widest">
               Showing {filtered.length} {filtered.length === 1 ? 'result' : 'results'}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
             {filtered.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
           {filtered.length === 0 && (
-            <div className="text-center py-20">
-              <p className="font-serif text-xl text-slate-400">No products found in this category.</p>
+            <div className="text-center py-40">
+              <p className="font-display text-2xl font-bold text-text-sub uppercase">No products found in this category.</p>
             </div>
           )}
         </div>
@@ -250,3 +251,4 @@ export default function ShopPage() {
     </main>
   );
 }
+
