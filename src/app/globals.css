@@ -10,8 +10,6 @@
   --color-accent-orange: #ff7e33;
   --color-accent-purple: #9b51e0;
   --color-accent-green: #2ecc71;
-  --color-navy: #0f172a;
-  --color-gold: #c5a059;
   
   --color-text-main: #2d3436;
   --color-text-sub: #636e72;
@@ -42,10 +40,11 @@ body {
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   }
   
   .tactile-out {

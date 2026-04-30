@@ -44,14 +44,14 @@ export default function Navbar() {
           <div className="flex items-center gap-4 md:hidden">
             <button
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-text-main border border-white/10 tactile-out active:scale-90 transition-all"
+              className="w-10 h-10 rounded-xl bg-white/40 flex items-center justify-center text-text-main border border-white/20 tactile-out active:scale-90 transition-all"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
           
           <Link href="/" className="group">
-            <span className="text-2xl font-display font-black tracking-tighter text-text-main uppercase group-hover:tracking-normal transition-all">
+            <span className="text-2xl font-display font-black tracking-tighter text-text-main uppercase group-hover:text-accent-blue transition-all">
               TrèsBon
             </span>
           </Link>
@@ -61,8 +61,8 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`font-display text-sm font-bold tracking-[0.2em] uppercase transition-all hover:text-accent-blue relative group ${
-                  pathname === link.href ? 'text-accent-blue' : 'text-text-sub'
+                className={`font-display text-xs font-bold tracking-[0.2em] uppercase transition-all hover:text-accent-blue relative group ${
+                  pathname === link.href ? 'text-accent-blue' : 'text-text-main/70'
                 }`}
               >
                 {link.name}
@@ -76,7 +76,7 @@ export default function Navbar() {
           <div className="flex items-center gap-6">
             <button 
               onClick={openCart} 
-              className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-text-main border border-white/10 tactile-out hover:scale-110 active:scale-90 transition-all relative group"
+              className="w-12 h-12 rounded-2xl bg-white/40 flex items-center justify-center text-text-main border border-white/20 tactile-out hover:scale-110 active:scale-90 transition-all relative group"
             >
               <ShoppingBag size={22} className="group-hover:text-accent-blue transition-colors" />
               {mounted && totalItems > 0 && (

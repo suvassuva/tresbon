@@ -51,11 +51,11 @@ export default function Home() {
               <div className="h-[1px] w-12 bg-gold"></div>
               <span className="font-sans text-xs font-semibold tracking-[0.3em] text-gold uppercase">Exclusive Beauty Experience</span>
             </div>
-            <h1 className="font-serif text-5xl md:text-7xl mb-8 leading-tight">
+            <h1 className="font-serif text-5xl md:text-7xl mb-8 leading-tight drop-shadow-lg">
               Artistry in Every <br />
               <span className="italic font-normal">Silhouette</span>
             </h1>
-            <p className="font-sans text-lg text-white/90 mb-12 max-w-lg leading-relaxed">
+            <p className="font-sans text-lg text-white mb-12 max-w-lg leading-relaxed drop-shadow-md">
               Experience the pinnacle of luxury hair care and bespoke beauty treatments tailored to your unique essence.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 mt-12">
@@ -65,7 +65,7 @@ export default function Home() {
                 </TactileButton>
               </Link>
               <Link href="/shop">
-                <TactileButton variant="glass" size="lg" className="w-full sm:w-auto">
+                <TactileButton variant="glass" size="lg" className="w-full sm:w-auto border-white/20">
                   SHOP COLLECTION
                 </TactileButton>
               </Link>
@@ -132,7 +132,7 @@ export default function Home() {
           <div className="text-center mb-20 flex flex-col items-center">
             <div className="w-px h-16 bg-gold mb-12"></div>
             <h2 className="font-serif text-4xl mb-4 text-white">Our Premium Partners</h2>
-            <p className="font-sans text-white/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-sans text-slate-300 max-w-2xl mx-auto leading-relaxed">
               We exclusively use the world's finest professional brands to ensure exceptional, uncompromising results for your hair and skin.
             </p>
           </div>
